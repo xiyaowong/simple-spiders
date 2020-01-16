@@ -26,7 +26,7 @@ SONG_NAME_PATTERN = r'"song_name":"(.*?)",'
 PLAY_URL_PATTERN = r'"playurl":"(.*?)",'
 
 
-def get(share_url):
+def get(url:str) -> dict:
     '''
     return {
         singer:
@@ -34,7 +34,7 @@ def get(share_url):
         play_url:
     }
     '''
-    with requests.get(url=share_url, headers=HEADERS, timeout=50) as rep:
+    with requests.get(url=url, headers=HEADERS, timeout=50) as rep:
         if rep.status_code == 200:
             html = rep.text
             singer = re.findall(SINGER_PATTERN, html)[0]
@@ -53,5 +53,5 @@ def get(share_url):
 
 
 if __name__ == "__main__":
-    data = get(input("share_url: \n"))
+    data = get(input("url: \n"))
     print(data)

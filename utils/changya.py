@@ -11,7 +11,7 @@ AUTHOR_PATTERN = r'"nickname":"(.*?)",'
 AUDIO_NAME_PATTERN = r'"songName":"(.*?)",'
 
 
-def get(url):
+def get(url:str) -> dict:
     '''
     return {
         author:

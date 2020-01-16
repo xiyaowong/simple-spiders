@@ -15,7 +15,7 @@ GET_SONG_INFO_URL = "https://wwwapi.kugou.com/yy/index.php?r=play/getdata&hash={
 
 HASH_PATTERN = r'"hash":"(.*?)",'
 
-def get(url):
+def get(url:str) -> dict:
     '''
     return {
         author_name:
