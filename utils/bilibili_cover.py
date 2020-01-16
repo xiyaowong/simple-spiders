@@ -40,6 +40,4 @@ def get(url: str) -> dict:
 
 
 if __name__ == "__main__":
-    url = "https://www.bilibili.com/video/av78638178"
-    # url = input('input the url: ')
-    print(get(url))
+    print(get(input("av url: ")))
