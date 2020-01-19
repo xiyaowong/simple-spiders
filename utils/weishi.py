@@ -3,6 +3,7 @@ from urllib.parse import urlparse, parse_qs
 
 import requests
 
+import helper
 
 # 未登录时分享的链接
 # url = "https://h5.weishi.qq.com/weishi/wsplay/challenge?feedid=6YV0vjeP71IHTsV08&challegeid=100026&spid=8039370850869145600&qua=v1_and_weishi_6.5.0_588_312027000_d&chid=127081004&pkg=&attach=cp_reserves3_1190370002"
@@ -116,6 +117,7 @@ def _get_logged(url: str) -> dict:
 
 
 def get(url: str) -> dict:
+    url = helper.get_origin_location(url)
     return _get_not_logged(url) if url.startswith("https://h5.weishi.qq.com/weishi/wsplay/challenge") else _get_logged(url)
 
 if __name__ == "__main__":
