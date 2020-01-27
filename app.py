@@ -1,18 +1,24 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+
+import bilibili_cover
 
 
 app = Flask(__name__)
-app.config['ENVIRONMENT'] = 'develop'
+app.config.from_pyfile('config.py')
 
-@app.route('/test/<url>', methods=['GET', 'POST'])
-def test(url):
-    if request.method == 'POST':
-        data = request.form
-        name = data.get('name')
-        gender = data.get('gender')
-        return f'name:{name}\ngender:{gender}'
-    else:
-        return url, type(url)
+CORS(app, resources=r'/*')
+
+@app.route('/bilibili_cover', methods=['GET', 'POST'])
+def bili_cover():
+    data = request.json
+    if data:
+        print(data)
+        url = data['url']
+        if url:
+            return jsonify(bilibili_cover.get(url))
+    return jsonify({"msg":"missing data"})
+
 
 
 if __name__ == "__main__":
