@@ -24,6 +24,7 @@ HEADERS = {
 SINGER_PATTERN = r',"nick":"(.*?)",'
 SONG_NAME_PATTERN = r'"song_name":"(.*?)",'
 PLAY_URL_PATTERN = r'"playurl":"(.*?)",'
+PLAY_VIDEO_PATTERN = r',"playurl_video":"(.*?)",'
 
 
 def get(url:str) -> dict:
@@ -32,6 +33,7 @@ def get(url:str) -> dict:
         singer:
         song_name:
         play_url:
+        play_video:
     }
     '''
     with requests.get(url=url, headers=HEADERS, timeout=50) as rep:
@@ -40,15 +42,18 @@ def get(url:str) -> dict:
             singer = re.findall(SINGER_PATTERN, html)[0]
             song_name = re.findall(SONG_NAME_PATTERN, html)[0]
             play_url = re.findall(PLAY_URL_PATTERN, html)[0]
+            play_video = re.findall(PLAY_VIDEO_PATTERN, html)[0]
         else:
             singer = ""
             song_name = ""
             play_url = ""
+            play_video = ""
 
     return {
         "singer": singer,
         "song_name": song_name,
         "play_url": play_url,
+        "play_video": play_video,
     }
 
 
