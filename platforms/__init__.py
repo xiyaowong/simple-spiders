@@ -6,6 +6,7 @@ __all__ = [
     'kuwo',
     'pipigaoxiao',
     'quanminkge',
-    'weishi'
+    'weishi',
+    'weibo',
 ]
-__author__ = "wongxy"
+__author__ = "wongxy github:xiyaowong"
