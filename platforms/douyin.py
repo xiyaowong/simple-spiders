@@ -31,17 +31,17 @@ def get(share_url) -> dict:
     # get share_url location
     with requests.get(share_url, headers=HEADERS, timeout=30) as rep:
         share_url = rep.headers.get('location', share_url)
-        print(share_url)
+        # print(share_url)
 
     # get html_text
     with requests.get(share_url, headers=HEADERS, timeout=30) as rep:
         html_text = rep.text
-        print(html_text)
+        # print(html_text)
 
     try:
         title = re.findall(TITLE_PATTERN, html_text)[0]
         play_url = re.findall(PLAY_URL_PATTERN, html_text)[0].replace('playwm', 'play')
-        print(title, play_url)
+        # print(title, play_url)
     except:
         title = ''
         play_url = ''
@@ -50,7 +50,7 @@ def get(share_url) -> dict:
     # get video_url
     if play_url:
         with requests.get(play_url, headers=HEADERS, allow_redirects=False, timeout=30) as rep:
-            print(rep.headers)
+            # print(rep.headers)
             video_url = rep.headers.get('location', '')
     else:
         video_url = ''

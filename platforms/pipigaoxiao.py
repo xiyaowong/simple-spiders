@@ -11,7 +11,7 @@ HEADERS = {
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36",
     "Content-Type": "text/plain;charset=UTF-8",
     "Accept": "*/*",
-    "Referer": "http://share.ippzone.com/pp/post/212467897747",
+    "Referer": "http://share.ippzone.com/",
     "Accept-Encoding": "gzip, deflate",
     "Accept-Language": "zh-CN,zh;q=0.9",
 }

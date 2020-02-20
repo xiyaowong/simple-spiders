@@ -3,7 +3,7 @@ from urllib.parse import urlparse, parse_qs
 
 import requests
 
-import helper
+from platforms import helper
 
 # 未登录时分享的链接
 # url = "https://h5.weishi.qq.com/weishi/wsplay/challenge?feedid=6YV0vjeP71IHTsV08&challegeid=100026&spid=8039370850869145600&qua=v1_and_weishi_6.5.0_588_312027000_d&chid=127081004&pkg=&attach=cp_reserves3_1190370002"
