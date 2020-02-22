@@ -8,5 +8,7 @@ __all__ = [
     'quanminkge',
     'weishi',
     'weibo',
+    'zuiyou_voice',
+    'zhihu_video',
 ]
 __author__ = "wongxy github:xiyaowong"
