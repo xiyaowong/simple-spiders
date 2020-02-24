@@ -13,7 +13,7 @@ def get(url: str) -> dict:
         "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1",
         "Referer": "https://m.bilibili.com/",
     }
-    ERROR = {'cover_url': ''}  # 只要有不对劲的时候就返回这个东东
+    ERROR = {'cover_url': '', 'video_url': ''}  # 只要有不对劲的时候就返回这个东东
 
     # 处理一下视频地址
     if not url:
@@ -28,12 +28,15 @@ def get(url: str) -> dict:
 
     with requests.get(url, headers=HEADERS, timeout=18) as rep:
         cover_pattern = r'<meta property="og:image" content="(http.*?)"/>'
+        video_pattern = r"video_url: '(.*?)',"
         if rep.status_code == 200:
             cover_url = re.findall(cover_pattern, rep.text)[0]
+            video_url = re.findall(video_pattern, rep.text)[0]
             if '@' in cover_url:
                 cover_url = cover_url[:cover_url.index('@')]
             return {
                 'cover_url': cover_url,
+                'video_url': video_url,
             }
         else:
             return ERROR
