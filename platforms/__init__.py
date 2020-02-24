@@ -10,5 +10,6 @@ __all__ = [
     'weibo',
     'zuiyou_voice',
     'zhihu_video',
+    'lizhiFM'
 ]
 __author__ = "wongxy github:xiyaowong"
