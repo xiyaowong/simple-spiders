@@ -21,6 +21,7 @@ class Platform(str, Enum):
     weishi = "weishi"
     zhihu_video = "zhihu_video"
     zuiyou_voice = "zuiyou_voice"
+    music163 = "music163"
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -76,5 +77,7 @@ def extract(platform: Platform, url: str):
         * voice_text: ""
         * uri: ""
         * org_uri: ""
+    * music163(网易云音乐):
+        * play_url: ""
     """
     return eval(platform.value).get(url)
