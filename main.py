@@ -26,7 +26,7 @@ class Platform(str, Enum):
 
 @app.get("/", response_class=HTMLResponse)
 def hello():
-    return HTMLResponse("<a href='/docs'>docs</a>")
+    return HTMLResponse('<link rel="shortcut icon" href="https://s2.ax1x.com/2020/02/24/38OCHe.png"><a href="/docs">docs</a>')
 
 @app.get("/{platform}/")
 def extract(platform: Platform, url: str):
